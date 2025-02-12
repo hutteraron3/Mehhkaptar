@@ -4,7 +4,8 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("mukodj");
+            Kaptár VaszarKaptár = new Kaptár(100, 10, 50, 15);
+            
         }
     }
 }
