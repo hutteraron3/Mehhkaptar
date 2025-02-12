@@ -10,12 +10,18 @@ namespace Méh
     {
         public int Életerő {  get; set; }
 
-        public int ÖsszegyűjtöttVirágpor {  get; set; }
+        public int ÖsszegyűjtöttNektár {  get; set; }
 
-        public Dolgozó(int összegyűjtöttVirágpor, int életerő) 
+        public Dolgozó(int összegyűjtöttNektár, int életerő) 
         {
-            ÖsszegyűjtöttVirágpor = összegyűjtöttVirágpor;
+            ÖsszegyűjtöttNektár = összegyűjtöttNektár;
             Életerő = Életerő;
+        }
+
+        public int Gyűjtés()
+        {
+            ÖsszegyűjtöttNektár += 10;
+            return ÖsszegyűjtöttNektár;
         }
     }
 }
