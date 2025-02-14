@@ -15,6 +15,7 @@
             Console.WriteLine($"{ElsőVirág.VirágporMennyiség} - {Közmunkás.ÖsszegyűjtöttNektár}");
             VaszarQueen.Peterakás(VaszarKaptár);
             System.Environment.Exit(1);
+            Console.WriteLine("Work bitch");
 
         }
     }
