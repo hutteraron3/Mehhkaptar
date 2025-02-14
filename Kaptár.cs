@@ -30,8 +30,8 @@ namespace Méh
                 _petékSzáma = value;
             }
         }
-
         public int MaxPetékSzáma { get; set; }
+
 
         public int KaptárÉleterő { 
         get
@@ -54,6 +54,10 @@ namespace Méh
         public Kaptár(int kaptárMéret, int petékSzáma, int kaptárÉleterő, int mézMennyiség, int maxPetékSzáma)
         {
             Kaptárméret = kaptárMéret;
+            PetékSzáma = petékSzáma;
+            KaptárÉleterő = kaptárÉleterő;
+            MézMennyiség = mézMennyiség;
+            MaxPetékSzáma = maxPetékSzáma;
         }
 
 

@@ -12,6 +12,8 @@ namespace Méh
 
         public int ÖsszegyűjtöttNektár {  get; set; }
 
+        
+
         public Dolgozó(int összegyűjtöttNektár, int életerő) 
         {
             ÖsszegyűjtöttNektár = összegyűjtöttNektár;
@@ -25,5 +27,14 @@ namespace Méh
             
             return ÖsszegyűjtöttNektár;
         }
+
+        public int Mézkészítés(int KívántMennyiség)
+        {
+            ÖsszegyűjtöttNektár -= KívántMennyiség;
+
+            return ÖsszegyűjtöttNektár;
+        }
+
+
     }
 }

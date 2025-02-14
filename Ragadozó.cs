@@ -12,10 +12,10 @@ namespace Méh
 
         int Sebzés { get; set; }
 
-        int TámadóFajta { get; set; }
+        string TámadóFajta { get; set; }
 
         int Támadás_effektivitása {  get; set; }
-        public Ragadozó(int életerő, int sebzés, int támadóFajta, int támadás_effektivitása)
+        public Ragadozó(int életerő, int sebzés, string támadóFajta, int támadás_effektivitása)
         {
             Életerő = életerő;
             Sebzés = sebzés;
@@ -27,17 +27,19 @@ namespace Méh
         {
             
             Random rnd = new Random();
-            int támadásEsélye = rnd.Next(100,100);
-            if ( támadásEsélye > Támadás_effektivitása )
+            int támadásEsélye = rnd.Next(0,101);
+            if ( támadásEsélye  < Támadás_effektivitása )
             {
                 kaptár.KaptárÉleterő -= Sebzés;
 
             }
-            if (támadásEsélye > Támadás_effektivitása * 2)
+            if (támadásEsélye < Támadás_effektivitása / 2)
             {
-                kaptár.KaptárÉleterő -= Sebzés * 2;
+                kaptár.KaptárÉleterő -= Sebzés;
 
             }
+            
+            
         }
 
         
