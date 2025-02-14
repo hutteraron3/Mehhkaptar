@@ -8,20 +8,55 @@ namespace Méh
 {
     internal class Kaptár
     {
+        private int _petékSzáma;
+        private int _kaptáréleterő;
+
         public int Kaptárméret { get; set; }
 
-        public int PetékSzáma { get; set; }
+        public int PetékSzáma
+        {
+            get
+            {
+                return _petékSzáma;
+            }
 
-        public int KaptárÉleterő { get; set; }
+            set
+            {
+                if (MaxPetékSzáma < value)
+                {
+                    throw new ArgumentException("Nem lehet több petéd");
 
-        public int MézMennyiség {  get; set; }
+                }
+                _petékSzáma = value;
+            }
+        }
 
-        public Kaptár(int kaptárMéret, int petékSzáma, int kaptárÉleterő, int mézMennyiség)
+        public int MaxPetékSzáma { get; set; }
+
+        public int KaptárÉleterő { 
+        get
+        {
+                return _kaptáréleterő;
+        }
+        set
+        {
+                if (KaptárÉleterő < 0)
+                {
+                    throw new ArgumentException("Túl kevés az életed, meghaltál");
+
+                }
+                _kaptáréleterő = value;
+            }       
+        }
+
+        public int MézMennyiség { get; set; }
+
+        public Kaptár(int kaptárMéret, int petékSzáma, int kaptárÉleterő, int mézMennyiség, int maxPetékSzáma)
         {
             Kaptárméret = kaptárMéret;
         }
 
-       
+
 
     }
 }

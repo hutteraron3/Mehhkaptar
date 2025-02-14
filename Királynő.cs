@@ -10,7 +10,16 @@ namespace Méh
     {
         public int Életerő { get; set; }
 
-        
+        public Királynő(int életerő)
+        {
+            Életerő = életerő;
+        }
 
+        public void Peterakás(Kaptár kaptár)
+        {
+            kaptár.PetékSzáma += 10;
+            Életerő -= 20;
+
+        }
     }
 }

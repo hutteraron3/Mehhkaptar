@@ -4,11 +4,18 @@
     {
         static void Main(string[] args)
         {
-            Kaptár VaszarKaptár = new Kaptár(100, 10, 50, 15);
-            Dolgozó közmunkás = new Dolgozó(0, 100);
+            int idő;
+            Kaptár VaszarKaptár = new Kaptár(100, 10, 50, 15, 100);
+            Dolgozó Közmunkás = new Dolgozó(0, 100);
+            Királynő VaszarQueen = new Királynő(100);
 
-            Dolgozó.Gyűjtés() =
-            
+            Virág ElsőVirág = new Virág(100, "Barackvirág");
+
+            Közmunkás.Gyűjtés(ElsőVirág);
+            Console.WriteLine($"{ElsőVirág.VirágporMennyiség} - {Közmunkás.ÖsszegyűjtöttNektár}");
+            VaszarQueen.Peterakás(VaszarKaptár);
+            System.Environment.Exit(1);
+
         }
     }
 }

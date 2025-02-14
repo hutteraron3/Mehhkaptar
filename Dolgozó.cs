@@ -18,9 +18,11 @@ namespace Méh
             Életerő = Életerő;
         }
 
-        public int Gyűjtés()
+        public int Gyűjtés(Virág virág)
         {
+            virág.VirágporMennyiség -= 30;
             ÖsszegyűjtöttNektár += 10;
+            
             return ÖsszegyűjtöttNektár;
         }
     }

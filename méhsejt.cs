@@ -8,7 +8,9 @@ namespace Méh
 {
     internal class Méhsejt
     {
-        int Kapacitás {  get; set; }
+        int Kapacitás { get; set; }
         public int Mézmennyiség { get; set; }
+
+        
     }
 }
