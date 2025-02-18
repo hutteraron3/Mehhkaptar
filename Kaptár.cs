@@ -49,15 +49,16 @@ namespace Méh
             }       
         }
 
-        public int MézMennyiség { get; set; }
+        public int Idő {  get; set; }
 
-        public Kaptár(int kaptárMéret, int petékSzáma, int kaptárÉleterő, int mézMennyiség, int maxPetékSzáma)
+
+        public Kaptár(int kaptárMéret, int petékSzáma, int kaptárÉleterő, int maxPetékSzáma, int idő)
         {
             Kaptárméret = kaptárMéret;
             PetékSzáma = petékSzáma;
             KaptárÉleterő = kaptárÉleterő;
-            MézMennyiség = mézMennyiség;
             MaxPetékSzáma = maxPetékSzáma;
+            Idő = idő;
         }
 
 

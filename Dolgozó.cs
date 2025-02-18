@@ -28,9 +28,10 @@ namespace Méh
             return ÖsszegyűjtöttNektár;
         }
 
-        public int Mézkészítés(int KívántMennyiség)
+        public int Mézkészítés(int KívántMennyiség, Méhsejt méhsejt)
         {
             ÖsszegyűjtöttNektár -= KívántMennyiség;
+            méhsejt.Mézmennyiség += KívántMennyiség;
 
             return ÖsszegyűjtöttNektár;
         }

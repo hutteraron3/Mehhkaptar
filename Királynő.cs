@@ -10,15 +10,19 @@ namespace Méh
     {
         public int Életerő { get; set; }
 
-        public Királynő(int életerő)
+        public int PetekelésIdő { get; set; }
+        public Királynő(int életerő, int petekelésIdő)
         {
             Életerő = életerő;
+            PetekelésIdő = petekelésIdő;
         }
 
         public void Peterakás(Kaptár kaptár)
         {
             kaptár.PetékSzáma += 10;
             Életerő -= 20;
+            PetekelésIdő -= 10;
+            
 
         }
     }

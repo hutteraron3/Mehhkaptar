@@ -11,6 +11,12 @@ namespace Méh
         int Kapacitás { get; set; }
         public int Mézmennyiség { get; set; }
 
+        public Méhsejt(int kapacitás, int mézmennyiség)
+        {
+            Kapacitás = kapacitás;
+            Mézmennyiség = Mézmennyiség;
+        }
+
         
     }
 }
