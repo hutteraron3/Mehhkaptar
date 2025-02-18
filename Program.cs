@@ -54,7 +54,21 @@ namespace Méh
                 }
                 else
                 {
-                    throw new Exception("Yuo need to put in correct numbers");
+                    throw new Exception("You need to put in correct numbers");
+                }
+                Random rnd = new Random();
+                int RandomEvent = rnd.Next(1, 6); 
+                switch (RandomEvent)
+                {
+                    case 1:
+                        {
+                            vihar = true;
+                            break;
+                        }
+                    case 2:
+                        {
+                            break;
+                        }
                 }
             }
             
