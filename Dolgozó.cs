@@ -20,20 +20,21 @@ namespace Méh
             Életerő = Életerő;
         }
 
-        public int Gyűjtés(Virág virág)
+        public int Gyűjtés(Virág virág, int DolgozóEffektiveness)
         {
             virág.VirágporMennyiség -= 30;
-            ÖsszegyűjtöttNektár += 10;
+            ÖsszegyűjtöttNektár += 10 + DolgozóEffektiveness;
             
             return ÖsszegyűjtöttNektár;
         }
 
-        public int Mézkészítés(int KívántMennyiség, Méhsejt méhsejt)
+        public void Mézkészítés(int KívántMennyiség, Méhsejt méhsejt)
         {
             ÖsszegyűjtöttNektár -= KívántMennyiség;
             méhsejt.Mézmennyiség += KívántMennyiség;
 
-            return ÖsszegyűjtöttNektár;
+            
+
         }
 
 

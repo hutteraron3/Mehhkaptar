@@ -23,7 +23,7 @@ namespace Méh
             Támadás_effektivitása = támadás_effektivitása;
         }
 
-        public void Támadás(Kaptár kaptár)
+        public void Támadás(Kaptár kaptár, Királynő királynő)
         {
             
             Random rnd = new Random();
@@ -31,11 +31,13 @@ namespace Méh
             if ( támadásEsélye  < Támadás_effektivitása )
             {
                 kaptár.KaptárÉleterő -= Sebzés;
+                királynő.Életerő -= Sebzés / 2;
 
             }
             if (támadásEsélye < Támadás_effektivitása / 2)
             {
                 kaptár.KaptárÉleterő -= Sebzés;
+                királynő.Életerő -= Sebzés / 2;
 
             }
             

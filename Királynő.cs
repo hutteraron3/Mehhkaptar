@@ -21,7 +21,7 @@ namespace Méh
         {
             kaptár.PetékSzáma += 10;
             Életerő -= 20;
-            PetekelésIdő -= 10;
+            
             
 
         }

@@ -9,7 +9,7 @@ namespace Méh
         {
            
             
-            Kaptár VaszarKaptár = new Kaptár(100, 0, 100, 100, 0);
+            Kaptár VaszarKaptár = new Kaptár(100, 0, 100, 100, 0, 0);
             Méhsejt vaszarosméhsejt = new Méhsejt(100, 0);
             Dolgozó Közmunkás = new Dolgozó(0, 100);
             Királynő VaszarQueen = new Királynő(100, 0);
@@ -29,9 +29,12 @@ namespace Méh
             int KaptárSzimuláció = -1;
             bool vihar = false;
             int viharszámláló = 0;
+            bool PetekelésÉppen = false;
+            int Dolgozóeffektivitás = 0;
 
             while (KaptárSzimuláció != 0)
             {
+                Console.Clear();
                 if (vihar == true)
                 {
                     viharszámláló += 1;
@@ -42,6 +45,29 @@ namespace Méh
                         viharszámláló = 0;
                     }
                 }
+
+                if (PetekelésÉppen == true)
+                {
+                    VaszarQueen.PetekelésIdő++;
+                    if (VaszarQueen.PetekelésIdő == 10)
+                    {
+                        Console.WriteLine("A peték kikelnek...");
+                        VaszarQueen.PetekelésIdő = 0;
+                        PetekelésÉppen = false;
+                        Console.WriteLine("Új, erősebb generáció váltja fel a nyugdíjba menő munkásokat");
+                        Közmunkás.Életerő += 100;
+                        Dolgozóeffektivitás += 10;
+
+                    }
+
+                }
+
+                if (VaszarQueen.Életerő <= 0)
+                {
+                    Console.WriteLine("A királynő meghalt, vége a játéknak");
+                    System.Environment.Exit(0);
+                }
+
                 
                 VaszarKaptár.Idő++;
                 VaszarQueen.PetekelésIdő++;
@@ -50,14 +76,15 @@ namespace Méh
                 Console.WriteLine("2 - Mézkészítés");
                 Console.WriteLine("3 - Peterakás");
                 Console.WriteLine("4 - Anyagok kiírása");
+                Console.WriteLine("5 - Kaptár gyógyítása");
                 Console.WriteLine("Mit tegyünk?");
 
                 // TODO: Random támadások
                 // Különböző virágok
                 // Kaptármérethez megfelelően magas számú anyagok
                 // dolgozók kikelnek 
-            KaptárSzimuláció = int.Parse(Console.ReadLine());
-                if (KaptárSzimuláció == 0 || KaptárSzimuláció == 1 || KaptárSzimuláció ==  2 || KaptárSzimuláció == 3 || KaptárSzimuláció == 4)
+                KaptárSzimuláció = int.Parse(Console.ReadLine());
+                if (KaptárSzimuláció == 0 || KaptárSzimuláció == 1 || KaptárSzimuláció ==  2 || KaptárSzimuláció == 3 || KaptárSzimuláció == 4 || KaptárSzimuláció == 5)
                 switch (KaptárSzimuláció)
                 {
                     case 0:
@@ -69,7 +96,7 @@ namespace Méh
                             }
                             else
                             {
-                                Közmunkás.Gyűjtés(ElsőVirág);
+                                Közmunkás.Gyűjtés(ElsőVirág, Dolgozóeffektivitás);
 
                             }
                         break;
@@ -87,6 +114,18 @@ namespace Méh
                             }
 
                             break;
+                    case 3:
+                            if (PetekelésÉppen == false)
+                            {
+                                VaszarQueen.Peterakás(VaszarKaptár);
+                                PetekelésÉppen = true;
+                                Console.WriteLine("A királynő élete egy darabját a petékbe adja");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Éppen keltetés zajlik.");
+                            }
+                        break;
                     case 4:
                             Console.WriteLine("Összes anyagod: ");
                             Console.WriteLine($"\t Mézmennyiség: {vaszarosméhsejt.Mézmennyiség}");
@@ -96,6 +135,21 @@ namespace Méh
 
 
                             break;
+                    case 5:
+                            VaszarKaptár.Gyógyítás(vaszarosméhsejt);
+                            if (VaszarKaptár.KaptárÉleterő <= VaszarKaptár.MaxÉleterő)
+                            {
+                                Console.WriteLine("Gyógyítottad a kaptárt!");
+                                Console.WriteLine($"Új életerő: {VaszarKaptár.KaptárÉleterő}");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Túlgyógyítottad a Kaptárt");
+                                VaszarKaptár.KaptárÉleterő = 100;
+                            }
+                            break;
+
+                                
                 }
                 else
                 {
@@ -115,16 +169,18 @@ namespace Méh
                     case 2:
                         {
                             Console.WriteLine($"Ellenség közeleg! ");
-                            Darázs.Támadás(VaszarKaptár);
-                            if (VaszarKaptár.KaptárÉleterő <= 0)
+                            Darázs.Támadás(VaszarKaptár, VaszarQueen);
+                            if (VaszarKaptár.KaptárÉleterő <= 0 || VaszarQueen.Életerő <= 0)
                             {
                                 Console.WriteLine("Meghaltál!");
                                 Console.ReadKey();
                                 System.Environment.Exit(0);
                             }
                             Console.WriteLine($"Támadás utáni életerő: {VaszarKaptár.KaptárÉleterő}");
-                            
-                               break;
+                            Console.WriteLine($"Királynő élete: {VaszarQueen.Életerő}");
+
+
+                            break;
 
                         }
                 }
